@@ -1,12 +1,22 @@
 #(Download from youtube)#
 def youtubedl():
-    import os, progressbar
-    from pytube import YouTube
-    from pytube.request import URLError
-    from pytube.exceptions import RegexMatchError
-    from colorama import Fore
-    import glob
-
+    try:
+        import os
+        from pytube import YouTube
+        from pytube.request import URLError
+        from pytube.exceptions import RegexMatchError
+        from colorama import Fore
+        import glob
+    except ImportError as e:
+        print('')
+        print(" SEEMS LIKE SOME PACKAGES ARE MISSING..USE THE FOLLOWING COMMAND:")
+        print('')
+        print("=> pip install pytube colorama")
+        print('')
+        print(' If you want to install dependencies for all other functionalities too use the following command:')
+        print('')
+        print('=> pip install -r requirements.txt')
+        quit()
     def progress(streams, chunk: bytes, bytes_remaining: int):
         contentsize = stream.filesize
         size = contentsize - bytes_remaining
